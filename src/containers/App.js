@@ -1,11 +1,17 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 
-const App = (props) => (
-	<main className="viewport">
-		{props.children}
-	</main>
-);
+class App extends Component {
+	render() {
+		return (
+			<div>
+				{ this.props.children }
+			</div>
+		);
+	}
+}
 
+// About propTypes, see
+// https://facebook.github.io/react/docs/reusable-components.html
 App.propTypes = {
 	children: PropTypes.node
 };

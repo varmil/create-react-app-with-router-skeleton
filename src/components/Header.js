@@ -1,27 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router'
 
-// const { string } = PropTypes;
-
-// const Header = ({ title, className }) => {
-//   const styles = `header-container ${className}`;
-
-//   return (
-//     <header className={styles}>
-//       <h1 className="header-title">{title}</h1>
-//     </header>
-//   );
-// };
-
-// Header.propTypes = {
-//   className: string,
-//   title: string
-// };
-
-// export default Header;
-
-
-export default class Header extends Component {
+class Header extends Component {
 	render() {
 		return (
 			<div>
@@ -34,3 +14,10 @@ export default class Header extends Component {
 		);
 	}
 }
+
+Header.propTypes = {
+	className: PropTypes.string,
+	title: PropTypes.string
+};
+
+export default Header;
