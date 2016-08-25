@@ -4,6 +4,8 @@
 // Error: The root route must render a single element #2779
 // To avoid this, use .default statement
 // https://github.com/reactjs/react-router/issues/2779
+// change with babel6
+// http://qiita.com/kamijin_fanta/items/e8e5fc750b563152bbcf#commonjs
 
 import App from '../containers/App';
 
@@ -16,22 +18,27 @@ import App from '../containers/App';
 // }
 
 export default {
+	// the root path
 	path: '/',
+	// the root container
 	component: App,
 
-	childRoutes: [{
-		path: 'home',
+	indexRoute: {
 		getComponent(location, cb) {
 			require.ensure([], (require) => {
 				cb(null, require('./Home').default);
-			}, 'HomePage');
+			}, 'Home');
 		}
-	}, {
-		path: 'blog',
-		getComponent(location, cb) {
-			require.ensure([], (require) => {
-				cb(null, require('./Blog').default);
-			}, 'BlogPage');
+	},
+
+	childRoutes: [
+		{
+			path: 'blog',
+			getComponent(location, cb) {
+				require.ensure([], (require) => {
+					cb(null, require('./Blog').default);
+				}, 'Blog');
+			}
 		}
-	}]
+	]
 };

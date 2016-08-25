@@ -1,14 +1,32 @@
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router'
+import { Link, withRouter } from 'react-router'
+
+import { AppBar, ListItem, List, Divider } from 'material-ui';
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import ActionInfo from 'material-ui/svg-icons/action/info';
 
 class Header extends Component {
+	onListItemTaped(link) {
+		// Programmatically navigate using react router
+		// http://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
+		this.props.router.push(link);
+	}
+
 	render() {
 		return (
 			<div>
 				<header className="header-container">
-					<h1 className="header-title">{this.props.title}</h1>
-					<li><Link to="/">Home</Link></li>
-					<li><Link to="/blog">Blog</Link></li>
+					<AppBar title={ this.props.title } />
+
+					<List>
+						<ListItem onTouchTap={this.onListItemTaped.bind(this, "/")} primaryText="To Home" leftIcon={<ContentInbox />} />
+						<ListItem primaryText={<Link to="/blog">To Blog</Link>} leftIcon={<ActionGrade />} />
+					</List>
+					<Divider />
+					<List>
+						<ListItem primaryText="All mail" rightIcon={<ActionInfo />} />
+					</List>
 				</header>
 			</div>
 		);
@@ -16,8 +34,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-	className: PropTypes.string,
 	title: PropTypes.string
 };
 
-export default Header;
+const DecoratedHeader = withRouter(Header);
+export default DecoratedHeader;

@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router'
 import rootRoute from './pages/routes';
-// import Home from './pages/Home';
-// import Blog from './pages/Blog';
 import './index.css';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 // NOTE: hashHistory uses the hash (#) portion of the URL, creating routes that look like example.com/#/some/path.
 
@@ -15,7 +18,8 @@ ReactDOM.render(
 
 
 
-
+// import Home from './pages/Home';
+// import Blog from './pages/Blog';
 // ReactDOM.render((
 //   <Router history={browserHistory}>
 //     <Route
@@ -38,8 +42,3 @@ ReactDOM.render(
 // 	),
 // 	document.getElementById('root')
 // );
-
-	// <Router history={browserHistory}>
-	// 	<Route path="/home" component={Home} />
-	// 	<Route path="/blog" component={Blog} />
-	// </Router>

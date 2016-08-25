@@ -14,7 +14,7 @@ class Blog extends Component {
 		return (
 			<div className="Blog">
 				<article className="women">
-					<Header title="Hello This is props title" className="header-red" />
+					<Header title="prop: blog" />
 				</article>
 			</div>
 		);
