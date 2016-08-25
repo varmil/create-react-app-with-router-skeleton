@@ -33,11 +33,11 @@ export default {
 
 	childRoutes: [
 		{
-			path: 'blog',
+			path: 'search',
 			getComponent(location, cb) {
 				require.ensure([], (require) => {
-					cb(null, require('./Blog').default);
-				}, 'Blog');
+					cb(null, require('./Search').default);
+				}, 'Search');
 			}
 		}
 	]

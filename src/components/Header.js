@@ -21,7 +21,7 @@ class Header extends Component {
 
 					<List>
 						<ListItem onTouchTap={this.onListItemTaped.bind(this, "/")} primaryText="To Home" leftIcon={<ContentInbox />} />
-						<ListItem primaryText={<Link to="/blog">To Blog</Link>} leftIcon={<ActionGrade />} />
+						<ListItem primaryText={<Link to="/search">To Search</Link>} leftIcon={<ActionGrade />} />
 					</List>
 					<Divider />
 					<List>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, browserHistory } from 'react-router'
 import rootRoute from './pages/routes';
 import './index.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';

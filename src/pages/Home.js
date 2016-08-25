@@ -19,9 +19,9 @@ class Home extends Component {
 
 				<div className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
+					<RaisedButton label="Default" />
 				</div>
 
-				<RaisedButton label="Default" />
 			</div>
 		);
 	}
