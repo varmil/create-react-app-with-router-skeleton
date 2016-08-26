@@ -1,17 +1,17 @@
 import { dispatch } from '../dispatcher/AppDispatcher';
-import FormConstants from '../constants/FormConstants';
+import AppConstants from '../constants/AppConstants';
 
 const FormActions = {
 	changeText(val) {
 		dispatch({
-			type: FormConstants.CHANGE_TEXT,
+			type: AppConstants.FORM_CHANGE_TEXT,
 			value: val
 		});
 	},
 
 	send(val) {
 		dispatch({
-			type: FormConstants.SEND,
+			type: AppConstants.FORM_SEND,
 			value: val
 		});
 	}

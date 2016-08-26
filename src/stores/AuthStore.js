@@ -1,6 +1,6 @@
 import { ReduceStore } from 'flux/utils';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import AuthConstants from '../constants/AuthConstants';
+import AppConstants from '../constants/AppConstants';
 
 class AuthStore extends ReduceStore {
 	getInitialState() {
@@ -13,7 +13,7 @@ class AuthStore extends ReduceStore {
 
 	reduce(state, action) {
 		switch (action.type) {
-			case AuthConstants.FETCH_MEMBER_STATE:
+			case AppConstants.AUTH_FETCH_MEMBER_STATE:
 				return {
 					isPrepared: action.value,
 					isLoggedIn: action.value,

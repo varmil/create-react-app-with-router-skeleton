@@ -1,6 +1,6 @@
 import { ReduceStore } from 'flux/utils';
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import FormConstants from '../constants/FormConstants';
+import AppConstants from '../constants/AppConstants';
 
 class FormStore extends ReduceStore {
 	getInitialState() {
@@ -11,8 +11,8 @@ class FormStore extends ReduceStore {
 
 	reduce(state, action) {
 		switch (action.type) {
-			case FormConstants.CHANGE_TEXT:
-			case FormConstants.SEND:
+			case AppConstants.FORM_CHANGE_TEXT:
+			case AppConstants.FORM_SEND:
 				return {
 					value: action.value
 				};
