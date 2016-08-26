@@ -6,6 +6,10 @@ import AuthStore from '../stores/AuthStore';
 // TODO: 認証系コンポーネントを共通クラスに吸い上げられない？userWillTransferしか違いがない
 
 class GuestOnly extends Component {
+	static propTypes = {
+		children: PropTypes.object.isRequired,
+	};
+
 	static getStores(): Array<Store> {
 		return [AuthStore];
 	}
@@ -33,10 +37,6 @@ class GuestOnly extends Component {
 		return <div>{this.props.children}</div>;
 	}
 }
-
-GuestOnly.propTypes = {
-	children: PropTypes.object.isRequired,
-};
 
 // NOTE: withRouter() --> Container.create()
 export default withRouter(Container.create(GuestOnly));

@@ -7,6 +7,10 @@ import ActionGrade from 'material-ui/svg-icons/action/grade';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
 class Header extends Component {
+	static propTypes = {
+		title: PropTypes.string
+	};
+
 	onListItemTaped(link) {
 		// Programmatically navigate using react router
 		// http://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
@@ -32,10 +36,6 @@ class Header extends Component {
 		);
 	}
 }
-
-Header.propTypes = {
-	title: PropTypes.string
-};
 
 const DecoratedHeader = withRouter(Header);
 export default DecoratedHeader;

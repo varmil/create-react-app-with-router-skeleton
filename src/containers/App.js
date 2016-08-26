@@ -6,6 +6,12 @@ import AuthActions from '../actions/AuthActions';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
+	// About propTypes, see
+	// https://facebook.github.io/react/docs/reusable-components.html
+	static propTypes = {
+		children: PropTypes.node
+	};
+
 	static getStores(): Array<Store> {
 		return [AuthStore];
 	}
@@ -40,11 +46,5 @@ class App extends Component {
 		;
 	}
 }
-
-// About propTypes, see
-// https://facebook.github.io/react/docs/reusable-components.html
-App.propTypes = {
-	children: PropTypes.node
-};
 
 export default Container.create(App);
