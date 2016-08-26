@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PageBase from './Base';
 import FormStore from '../stores/FormStore';
 import { Container } from 'flux/utils';
 import Header from '../components/Header';
 import TextForm from '../components/TextForm';
-// import List from 'components/List/List';
 
-// const listItems = [
-//   { title: 'One' },
-//   { title: 'Two' },
-//   { title: 'Three' },
-//   { title: 'Four' }
-// ];
-
-class Search extends Component {
+class Search extends PageBase {
 	static getStores(): Array<Store> {
 		return [FormStore];
 	}

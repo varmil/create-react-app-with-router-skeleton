@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PageBase from './Base';
 import Header from '../components/Header';
 import { Paper, RaisedButton } from 'material-ui';
 import logo from '../logo.svg';
 import './Home.css';
 
-class Home extends Component {
+class Home extends PageBase {
 	render() {
 		return (
 			<div className="App">

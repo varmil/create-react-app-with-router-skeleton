@@ -5,6 +5,7 @@ import AuthActions from '../actions/AuthActions';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// This component is mounted on Initial Loading
 class App extends Component {
 	// About propTypes, see
 	// https://facebook.github.io/react/docs/reusable-components.html

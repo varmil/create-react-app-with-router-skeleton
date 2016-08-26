@@ -17,8 +17,7 @@ class AuthStore extends ReduceStore {
 				return {
 					...state,
 					isPrepared: action.value,
-					isLoggedIn: action.value,
-					isPremium: false
+					isLoggedIn: action.value
 				};
 			default:
 				return state;

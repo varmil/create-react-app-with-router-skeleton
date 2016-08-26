@@ -36,6 +36,9 @@ export default (
 
 		<Route path="login" getComponent={requireEnsure('./Search')} />
 		<Route path="search" getComponent={requireEnsure('./Search')} />
+
+		<Route component={GuestOnly}>
+		</Route>
 	</Route>
 );
 
