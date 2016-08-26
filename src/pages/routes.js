@@ -6,8 +6,11 @@
 // https://github.com/reactjs/react-router/issues/2779
 // change with babel6
 // http://qiita.com/kamijin_fanta/items/e8e5fc750b563152bbcf#commonjs
-
+import React from 'react';
+import { Route, IndexRoute } from 'react-router'
 import App from '../containers/App';
+import UserOnly from '../containers/UserOnly';
+import GuestOnly from '../containers/GuestOnly';
 
 // function errorLoading(err) {
 // 	console.error('Dynamic page loading failed', err);
@@ -17,28 +20,47 @@ import App from '../containers/App';
 // 	return (module) => cb(null, module.default);
 // }
 
-export default {
-	// the root path
-	path: '/',
-	// the root container
-	component: App,
+function requireEnsure(module) {
+	return (location, cb) => {
+		require.ensure([], (require) => {
+			cb(null, require(module).default);
+		});
+	};
+}
 
-	indexRoute: {
-		getComponent(location, cb) {
-			require.ensure([], (require) => {
-				cb(null, require('./Home').default);
-			}, 'Home');
-		}
-	},
+export default (
+	<Route path="/" component={App}>
+		<Route component={UserOnly}>
+			<IndexRoute getComponent={requireEnsure('./Home')} />
+		</Route>
 
-	childRoutes: [
-		{
-			path: 'search',
-			getComponent(location, cb) {
-				require.ensure([], (require) => {
-					cb(null, require('./Search').default);
-				}, 'Search');
-			}
-		}
-	]
-};
+		<Route path="login" getComponent={requireEnsure('./Search')} />
+		<Route path="search" getComponent={requireEnsure('./Search')} />
+	</Route>
+);
+
+// export default {
+// 	// the root path
+// 	path: '/',
+// 	// the root container
+// 	component: App,
+//
+// 	indexRoute: {
+// 		getComponent(location, cb) {
+// 			require.ensure([], (require) => {
+// 				cb(null, require('./Home').default);
+// 			}, 'Home');
+// 		}
+// 	},
+//
+// 	childRoutes: [
+// 		{
+// 			path: 'search',
+// 			getComponent(location, cb) {
+// 				require.ensure([], (require) => {
+// 					cb(null, require('./Search').default);
+// 				}, 'Search');
+// 			}
+// 		}
+// 	]
+// };

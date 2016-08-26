@@ -18,7 +18,7 @@ class Search extends Component {
 	}
 
 	static calculateState(prevState: ?State): State {
-		console.info('[calculateState] prevState', prevState);
+		console.info('[Search][calculateState] prevState', prevState);
 
 		return {
 			form: FormStore.getState(),
