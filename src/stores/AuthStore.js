@@ -15,12 +15,12 @@ class AuthStore extends ReduceStore {
 		switch (action.type) {
 			case AppConstants.AUTH_FETCH_MEMBER_STATE:
 				return {
+					...state,
 					isPrepared: action.value,
 					isLoggedIn: action.value,
-					isPremium: false,
+					isPremium: false
 				};
 			default:
-				console.info('Not match any actions', state, action);
 				return state;
 		}
 	}

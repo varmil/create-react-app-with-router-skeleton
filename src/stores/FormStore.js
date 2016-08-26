@@ -14,10 +14,10 @@ class FormStore extends ReduceStore {
 			case AppConstants.FORM_CHANGE_TEXT:
 			case AppConstants.FORM_SEND:
 				return {
+					...state,
 					value: action.value
 				};
 			default:
-				console.info('Not match any actions', state, action);
 				return state;
 		}
 	}
