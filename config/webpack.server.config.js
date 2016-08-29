@@ -6,16 +6,21 @@
 // https://github.com/facebookincubator/create-react-app/tree/master/config
 // https://github.com/facebookincubator/create-react-app/blob/master/package.json
 
-var nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals');
+const WebpackShellPlugin = require('webpack-shell-plugin');
+
+const serverRootPath = __dirname + '/../server';
+const serverBuildPath = serverRootPath + '/build';
+const outputFileName = 'server.bundle.js';
 
 module.exports = {
 	name: 'server',
-	entry: __dirname + '/server/index.js',
+	entry: serverRootPath + '/app.js',
 	target: 'node',
 	externals: [nodeExternals()],
 	output: {
-		path: __dirname + '/server',
-		filename: 'server.bundle.js',
+		path: serverBuildPath,
+		filename: outputFileName,
 	},
 	node: {
 		__filename: true,
@@ -27,15 +32,20 @@ module.exports = {
 			test: /\.js$/,
 			exclude: /node_modules/,
 			loader: 'babel-loader',
-			query: {
-				babelrc: false,
-				presets: ['latest', 'react']
-			}
+			query: require('./babel')
 		}, {
 			test: /\.json$/,
 			loader: 'json-loader',
 		}]
 	},
+	plugins: [
+		new WebpackShellPlugin({
+			// This causes scripts to execute once. Useful for running HMR on webpack-dev-server or webpack watch mode.
+			dev: false,
+			onBuildStart: [],
+			onBuildEnd: [__dirname + '/pm2_restart.sh ' + serverBuildPath + '/' + outputFileName]
+		})
+	],
 	resolve: {
 		extensions: ['', '.js', '.jsx']
 	}
